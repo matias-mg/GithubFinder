@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import GithubContext from '../../context/github/githubContext';
 
-const Finder = ({ searchUser, showBtn, clearUsers, setAlert }) => {
+const Finder = ({ showBtn, clearUsers, setAlert }) => {
+const githubContext = useContext(GithubContext);
+
   const [text, setText] = useState('');
 
   const onSubmit = e => {
@@ -9,7 +12,7 @@ const Finder = ({ searchUser, showBtn, clearUsers, setAlert }) => {
     if (text === '') {
       setAlert('Please enter something', 'light');
     } else {
-      searchUser(text);
+      githubContext.searchUsers(text);
       setText('');
     }
   };
@@ -42,7 +45,6 @@ const Finder = ({ searchUser, showBtn, clearUsers, setAlert }) => {
 };
 
 Finder.propTypes = {
-  searchUser: PropTypes.func.isRequired,
   clearUsers: PropTypes.func.isRequired,
   showBtn: PropTypes.bool.isRequired,
   setAlert: PropTypes.func.isRequired
