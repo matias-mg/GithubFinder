@@ -45,11 +45,6 @@ const App = () => {
     setLoading(false);
   };
 
-  //Clear users array with Clear button Component
-  const clearUsers = () => {
-    setUsers([]);
-  }
-
   //Alert if text field is null
   const showAlert = (msg, type) => {
     setAlert({ msg, type });
@@ -71,8 +66,6 @@ const App = () => {
                 render={props => (
                   <React.Fragment>
                     <Finder
-                      clearUsers={clearUsers}
-                      showBtn={users.length > 0 ? true : false}
                       setAlert={showAlert}
                     />
                     <Users />
